@@ -1,0 +1,2262 @@
+Enter file contents here   
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Blog  |  Partners  |  Contact  |  
+ 
+  |  
+   |  
+ Login 
+
+
+
+
+
+
+
+
+
+   
+
+  
+Hortonworks Logo
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+Why Hortonworks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Products
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Customers
+
+
+Solutions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Training
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Services
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Developers
+
+
+
+
+
+
+
+
+
+
+
+Get Started
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+What is Hadoop? » Apache Storm
+
+
+
+
+
+
+
+
+
+Apache Top-Level Project Since
+
+September 2014
+
+
+Hortonworks Committers
+
+4
+
+
+Project Page
+
+http://storm.apache.org
+ 
+
+Apache Storm
+ 
+A system for processing streaming data in real time
+
+Apache™ Storm adds reliable real-time data processing capabilities to Enterprise Hadoop. Storm on YARN is powerful for scenarios requiring real-time analytics, machine learning and continuous monitoring of operations.
+
+Storm integrates with YARN via Apache Slider, YARN manages Storm while also considering cluster resources for data governance, security and operations components of a modern data architecture.
+
+
+
+
+Storm Overview
+
+
+What Storm Does
+
+
+How Storm Works
+
+
+Hortonworks Focus for Storm
+
+
+Recent Progress in Storm
+
+
+Storm Tutorials
+
+
+Storm in the Blog
+
+
+Webinars & Presentations
+
+
+Storm Forum
+
+
+
+
+
+
+What Storm Does
+
+Storm is a distributed real-time computation system for processing large volumes of high-velocity data. Storm is extremely fast, with the ability to process over a million records per second per node on a cluster of modest size. Enterprises harness this speed and combine it with other data access applications in Hadoop to prevent undesirable events or to optimize positive outcomes.
+
+Some of specific new business opportunities include: real-time customer service management, data monetization, operational dashboards, or cyber security analytics and threat detection. 
+
+Here are some typical “prevent” and “optimize” use cases for Storm.
+
+
+
+“Prevent” Use Cases
+
+“Optimize” Use Cases
+
+
+ Financial Services •Securities fraud
+•Operational risks & compliance violations
+ •Order routing
+•Pricing
+ 
+  Telecom •Security breaches
+•Network outages
+ •Bandwidth allocation
+•Customer service
+ 
+  Retail •Shrinkage
+•Stock outs
+ •Offers
+•Pricing
+ 
+  Manufacturing •Preventative maintenance
+•Quality assurance
+ •Supply chain optimization
+•Reduced plant downtime
+ 
+  Transportation •Driver monitoring
+•Predictive maintenance
+ •Routes
+•Pricing
+ 
+  Web •Application failures
+•Operational issues
+ •Personalized content
+ 
+
+Now with Storm in Hadoop on YARN, a Hadoop cluster can efficiently process a full range of workloads from real-time to interactive to batch. Storm is simple and developers can write Storm topologies using any programming language.
+
+Five characteristics make Storm ideal for real-time data processing workloads. Storm is:
+•Fast – benchmarked as processing one million 100 byte messages per second per node
+•Scalable – with parallel calculations that run across a cluster of machines
+•Fault-tolerant – when workers die, Storm will automatically restart them. If a node dies, the worker will be restarted on another node.
+•Reliable – Storm guarantees that each unit of data (tuple) will be processed at least once or exactly once. Messages are only replayed when there are failures.
+•Easy to operate – standard configurations are suitable for production on day one. Once deployed, Storm is easy to operate.
+ 
+
+
+How Storm Works
+
+A storm cluster has three sets of nodes:
+•Nimbus node (master node, similar to the Hadoop JobTracker): ◦Uploads computations for execution
+◦Distributes code across the cluster
+◦Launches workers across the cluster
+◦Monitors computation and reallocates workers as needed
+
+•ZooKeeper nodes – coordinates the Storm cluster
+•Supervisor nodes – communicates with Nimbus through Zookeeper, starts and stops workers according to signals from Nimbus
+
+storm_architecture
+
+Five key abstractions help to understand how Storm processes data:
+•Tuples– an ordered list of elements. For example, a “4-tuple” might be (7, 1, 3, 7)
+•Streams – an unbounded sequence of tuples.
+•Spouts –sources of streams in a computation (e.g. a Twitter API)
+•Bolts – process input streams and produce output streams. They can: run functions; filter, aggregate, or join data; or talk to databases.
+•Topologies – the overall calculation, represented visually as a network of spouts and bolts (as in the following diagram)
+
+Storm_concepts
+
+Storm users define topologies for how to process the data when it comes streaming in from the spout. When the data comes in, it is processed and the results are passed into Hadoop.
+
+Learn more about how the community is working to integrate Storm with Hadoop and improve its readiness for the enterprise.
+
+
+
+Hortonworks Focus for Storm
+
+Apache Storm added open source, stream data processing to Enterprise Hadoop and Hortonworks Data Platform. The Storm community is working to improve capabilities related to three important themes: business continuity, operations and developer productivity. The team is working to deliver high availability (HA), user authentication, advanced scheduling and declarative wiring to Storm.
+
+
+Focus
+
+Planned Enhancements
+
+
+Business continuity Enhance Storm’s enterprise readiness with high availability (HA) and failover to standby clusters 
+Operations Apache Ambari support for Nimbus HA node setup and elastic topologies via YARN and Apache Slider. Incremental improvements to Storm UI to easily deploy, manage and monitor topologies. 
+Enterprise readiness Assist developer productivity with declarative wiring of data sources, spouts and bolts into topologies 
+
+
+
+Recent Progress in Storm
+
+The Apache Storm open source community has already begun working on those themes.
+
+
+Storm Version
+
+Progress
+
+
+Version 0.9.2 •Netty transport overhaul – significantly improve performance through better utilization of thread, CPU, and network resources
+•UI improvements with a new REST API – REST API exposes metrics and operations in JSON format, used by the UI
+•Plugable serialization for multilang – enables the use of more performant serialization frameworks than JSON, like protocol buffers
+•Apache Kafka spout – for consuming data from Kafka
+ 
+Version 0.9.0 •Netty-based messaging transport
+•Log viewer UI
+•Improved Windows platform support
+•Security improvements
+•API compatibility and upgrading
+ 
+
+
+Storm Tutorials
+
+
+
+
+Transporting Real-Time Event Stream with Apache Kafka
+
+Introduction Welcome to the three part tutorial on real time data processing with Apache Kafka, Apache Storm, Apache HBase and Hive. This set of...
+
+Use Cases & Examples
+
+
+Processing Real-time events with Apache Storm
+
+
+Introduction In this tutorial, we will explore Apache Storm and use it with Apache Kafka to develop a multi-stage event processing pipeline....
+
+Use Cases & Examples
+
+
+Real time Data Ingestion in HBase & Hive using Storm Bolt
+
+In this tutorial, we will build a solution to ingest real time streaming data into HBase and HDFS.
+ In previous tutorial we have explored generating and processing streaming data with Apache Kafka and Apache Storm. In this tutorial we will create HDFS Bolt & HBase Bolt to read the streaming data from the Kafka Spout and persist in Hive & HBase tables. 
+
+
+New Features
+
+
+Processing streaming data in Hadoop with Apache Storm
+
+How to use Apache Storm to process real-time streaming data in Hadoop with Hortonworks Data Platform.
+
+New Features
+
+
+
+Storm in our Blog
+
+
+
+
+HDP in the Cloud Accelerates Symantec’s Time to Protection
+
+Symantec helps consumers and organizations secure and manage their information-driven world by protecting digital information and online...
+
+September 9, 2015
+
+by Justin Sears
+
+
+Fault tolerant Nimbus in Apache Storm
+
+Everyday more and more new devices—smartphones, sensors, wearables, tablets, home appliances—connect together by joining the “Internet...
+
+August 18, 2015
+
+by Parth Brahmbhatt
+
+
+Introducing Availability of HDP 2.3 – Part 2
+
+On July 22nd, we introduced the general availability of HDP 2.3. In part 2 of this blog series, we explore notable improvements and features related...
+
+July 24, 2015
+
+by Tim Hall
+
+
+Announcing Apache Ranger 0.5.0
+
+As YARN drives Hadoop’s emergence as a business-critical data platform, the enterprise requires more stringent data security capabilities....
+
+June 23, 2015
+
+by Balaji Ganesan
+
+
+Announcing Apache Slider 0.80.0
+
+Last week, the Apache Slider community released Apache Slider 0.80.0. Although there are many new features in Slider 0.80.0, few innovations...
+
+June 5, 2015
+
+by Gour Saha
+
+
+Announcing HDP Developer Portal
+
+Historically, the strength of a platform lies in the abilities of developers to learn, try, and build against the platform APIs and capabilities....
+
+May 14, 2015
+
+by Matt Carter
+
+
+The Power of Advanced Analytics for Midstream Oil and Gas
+
+Newbold Advisors is a Hortonworks® services partner that works with customers in the oil and gas industry. The company delivers big data analytics...
+
+March 30, 2015
+
+by Kelly Kohlleffel
+
+
+How to Become an Analytics-Ready Insurer
+
+On March 25th, Josh Lee, Global Director for Insurance Marketing at Informatica and Cindy Maike, General Manager, Insurance at Hortonworks,...
+
+March 11, 2015
+
+by Cindy Maike
+
+
+Journey to a Health Care Data Lake: Hadoop at Mercy
+
+Paul Boal, Director of Data Management & Analytics at Mercy, is our guest blogger. He shares his thoughts and insights about Apache Hadoop,...
+
+March 9, 2015
+
+by Richard Proctor
+
+
+Apache Hadoop YARN in HDP 2.2: Fault-Tolerance Features for Long-running Services
+
+This is the second post in a series exploring the theme of long-running service workloads in YARN. See for the introductory post. Long-running...
+
+March 3, 2015
+
+by Jian He
+
+
+Microsoft Azure HDInsight on LINUX Expands Application Platforms
+
+Today Microsoft announced two important new updates to their Azure HDInsight Service with Apache Hadoop 2.6, now available on new clusters. We...
+
+February 18, 2015
+
+by Rohit Bakhshi
+
+
+Storm and Kafka Together: A Real-time Data Refinery
+
+Hortonworks Data Platform’s YARN-based architecture enables multiple applications to share a common cluster and data set while ensuring...
+
+February 12, 2015
+
+by Rajiv Onat
+
+
+KOYA on Apache Slider
+
+...
+
+February 5, 2015
+
+by Guest Author
+
+
+Support For long-running services on your Hadoop YARN clusters
+
+This is the second post in a series that explores recent innovations in the Hadoop ecosystem that are included in HDP 2.2. In this post, we introduce...
+
+February 3, 2015
+
+by Vinod Kumar Vavilapalli
+
+
+The Importance of Hadoop Integration with VoltDB
+
+VoltDB is a Certified Hortonworks Technology Partner and developers of an in-memory relational DBMS capable of supporting high volume OLTP and...
+
+January 27, 2015
+
+by Lisa Sensmeier
+
+
+Discover HDP 2.2: Apache HBase with YARN & Slider for Fast NoSQL Access
+
+Last year on December 11th, Hortonworks presented the sixth of 8 Discover HDP 2.2 webinars: Apache HBase with YARN & Slider for Fast NoSQL...
+
+January 12, 2015
+
+by Jules S. Damji
+
+
+Apache Ranger Audit Framework
+
+Introduction Apache Ranger provides centralized security for the Enterprise Hadoop ecosystem, including fine-grained access control and...
+
+December 23, 2014
+
+by Madhan Neethiraj
+
+
+Discover HDP 2.2: Apache Kafka and Apache Storm for Stream Data Processing
+
+On December 4th, Hortonworks presented the fifth of 8 Discover HDP 2.2 webinars: Apache Kafka and Apache Storm for Stream Data Processing. Taylor...
+
+December 18, 2014
+
+by Jules S. Damji
+
+
+Announcing Apache Storm 0.9.3
+
+With Apache Hadoop YARN as its architectural center, Apache Hadoop continues to attract new engines to run within the data platform, as organizations...
+
+December 18, 2014
+
+by Taylor Goetz
+
+
+Announcing Apache Slider 0.60.0
+
+Hortonworks architects vertically integrate the projects within our Hadoop distribution with YARN and HDFS in order to enable HDP to span workloads...
+
+December 16, 2014
+
+by Steve Loughran
+
+
+Announcing Apache Ranger 0.4.0
+
+With Apache Hadoop YARN as its architectural center, Apache Hadoop continues to attract new engines to run within the data platform, as organizations...
+
+December 10, 2014
+
+by Balaji Ganesan
+
+
+Announcing Apache Hadoop 2.6.0
+
+It gives me great pleasure to announce that the Apache Hadoop community has released Apache Hadoop 2.6.0 ! In particular, we are excited about three...
+
+December 1, 2014
+
+by Arun Murthy
+
+
+Big Data is Driving Adoption of Clean Energy
+
+Hortonworks is pleased to be part of the “going green” movement and even more pleased to introduce guest bloggers from Actian and Slingshot...
+
+November 21, 2014
+
+by Lisa Sensmeier
+
+
+Discovering Patterns for Cyber Defense Using Linked Data Analysis
+
+News of customer data breaches seems to hit the headlines every week and we know that attackers have become more sophisticated in their tactics....
+
+November 11, 2014
+
+by Lisa Sensmeier
+
+
+HDP 2.2 – A Major Step Forward for Enterprise Hadoop
+
+Hortonworks Data Platform Version 2.2 represents yet another major step forward for Hadoop as the foundation of a Modern Data Architecture. This...
+
+October 15, 2014
+
+by Tim Hall
+
+
+Apache Storm Wins InfoWorld Bossie 2014 Award
+
+A panel of reviewers made up of InfoWorld Test Center editors and industry experts selected Apache Storm as a winner for 2014’s InfoWorld Bossie...
+
+October 8, 2014
+
+by Taylor Goetz
+
+
+Webinar Recap “Retail Insights: What’s Possible With a Modern Data Architecture”
+
+Last week’s Hortonworks webinar “What’s Possible with a Modern Data Architecture?” featured Greg Girard, program director for omni-channel...
+
+September 30, 2014
+
+by Justin Sears
+
+
+Real World Examples: Real-time Data From the Internet of Things (IoT)
+
+Internet of Things (IoT) Potential and Process It may seem obvious (or inevitable), but many companies are embracing the Internet of Things (IoT)—and...
+
+September 22, 2014
+
+by Jules S. Damji
+
+
+Apache Storm Graduates to a Top-Level Project
+
+On September 17, the Apache Software Foundation (ASF) voted to graduate Apache Storm to a top-level project (TLP). This represents a major step...
+
+September 22, 2014
+
+by Taylor Goetz
+
+
+STORM and SOLR for Sentiment Analysis & Continuous Repricing for Retailers
+
+ITC Infotech is a Hortonworks consulting and integration partner and provides IT services and solutions to leading global customers. The company...
+
+September 22, 2014
+
+by Lisa Sensmeier
+
+
+Announcing HDP Tech Preview Component: Apache Kafka
+
+We are excited to announce that Apache Kafka 0.8.1.1 is now available as a technical preview with Hortonworks Data Platform 2.1. Kafka was originally...
+
+August 28, 2014
+
+by Sriharsha Chintalapani
+
+
+Hadoop Summit Curated Content: Apache Storm
+
+Chaos Before The Storm … and a Brief History For its name and the metaphoric image it evokes, Apache Storm lives up to its purpose and promise: to...
+
+August 27, 2014
+
+by Jules S. Damji
+
+
+Apache Storm Design Pattern—Micro Batching
+
+Sheetal Dolas is a Principal Architect at Hortonworks. As part of Apache Storm design patterns’ series blog, he explores three options ...
+
+August 26, 2014
+
+by Jules S. Damji
+
+
+The Future of Apache Storm: Secure, Highly-Available, Multi-Tenant Processing in YARN
+
+YARN and Apache Storm: A Powerful Combination YARN changed the game for all data access engines in Apache Hadoop. As part of Hadoop 2, YARN took the...
+
+August 24, 2014
+
+by Taylor Goetz
+
+
+Discover HDP 2.1: Webinar Series Wrap Up
+
+This summer, Hortonworks presented the Discover HDP 2.1 Webinar series. Our developers and product managers highlighted the latest innovations...
+
+August 22, 2014
+
+by Justin Sears
+
+
+DataStax Certified on Hortonworks Data Platform
+
+Apache Cassandra is an open source NoSQL distributed database management system designed to handle large amounts of data offering a scalable ...
+
+July 1, 2014
+
+by Lisa Sensmeier
+
+
+Apache Storm 0.9.2 Released with New Features
+
+The Apache Storm community recently announced the release of Apache Storm 0.9.2, which includes improvements to Storm’s user interface and...
+
+June 30, 2014
+
+by Taylor Goetz
+
+
+Discover HDP 2.1: Apache Storm for Stream Data Processing in Hadoop
+
+We recently hosted the sixth of our seven Discover HDP 2.1 webinars, entitled Apache Storm for Stream Data Processing in Hadoop. Over 200 people...
+
+June 23, 2014
+
+by Jules S. Damji
+
+
+Seven BoFs for the Hadoop Summit
+
+The first use of the term BoF session was used at the Digital Equipment Users’ Society (DECUS) conference in the 1960s. Its essence was to bring...
+
+April 30, 2014
+
+by Jules S. Damji
+
+
+Announcing HDP 2.1 GA: Enterprise Hadoop
+
+Three weeks ago, we announced availability of the technical preview of Hortonworks Data Platform (HDP) version 2.1 and since then we have had thousands...
+
+April 22, 2014
+
+by Jim Walker
+
+
+Tutorials for Hadoop with HDP 2.1: Hive, Tez, Falcon, Knox, Storm
+
+If you’re excited to get started with the new features in Hortonworks Data Platform 2.1, then we’ve included 4 tutorials for you try...
+
+April 1, 2014
+
+by Saptak Sen
+
+
+Advancing Enterprise Hadoop with Hortonworks Data Platform 2.1
+
+The pace of innovation within the Apache Hadoop community is truly remarkable, enabling us to announce the availability of Hortonworks Data Platform...
+
+April 1, 2014
+
+by Jim Walker
+
+
+Apache Storm and Hadoop
+
+In February 2014, the Apache Storm community released Storm version 0.9.1. Storm is a distributed, fault-tolerant, and high-performance real-time...
+
+March 24, 2014
+
+by Taylor Goetz
+
+
+Apache Storm: Real-Time Processing in Hadoop
+
+I recently sat down with Himanshu Bari to discuss how Apache Ambari will serve as the single point of management for Hadoop 2 clusters integrated...
+
+January 29, 2014
+
+by Justin Sears
+
+
+Downloads for Storm, Falcon, Knox Gateway and Tez
+
+Last week was a busy week for shipping code, so here’s a quick recap on the new stuff to keep you busy over the holiday season. Technical Preview...
+
+December 16, 2013
+
+by Marc Holmes
+
+
+Storm Technical Preview Available Now!
+
+In October, we announced our intent to include and support Storm as part of Hortonworks Data Platform. With this commitment, we also outlined...
+
+December 12, 2013
+
+by Himanshu Bari
+
+
+How Big Data is revolutionizing Fraud Detection in Financial Services
+
+Join Hortonworks and Pactera for a Webinar on Unlocking Big Data’s Potential in Financial Services Thursday, November 21st at 12:00 EST....
+
+November 14, 2013
+
+by Lisa Sensmeier
+
+
+Using Apache Storm with HDP – Demo and Code
+
+Apache Storm and YARN extend Hadoop to handle real time processing of data and provides the ability to process and respond events as they happen....
+
+October 15, 2013
+
+by Paul Codding
+
+
+Stream Processing in Hadoop: YARN, Storm and the Hortonworks Data Platform
+
+Hortonworks will be making a preview of Apache Storm integration available in Q4 of this year and will be including Apache Storm in the Hortonworks...
+
+October 14, 2013
+
+by Bob Page
+
+
+
+Webinars & Presentations
+
+
+
+
+
+Recorded on : Aug 27, 2015
+
+Hortonworks Technical Workshop: New in Hortonworks Data Platform 2.3
+
+
+The recently launched HDP 2.3 is a major advancement of Open Enterprise Hadoop. It represents the best of community led development with innovations spanning Apache Hadoop, Apache Ambari, Ranger, HBase, Spark, and Storm. In this session we will provide an in-depth overview of new functionalities and discuss the impact on new and ongoing big data initiatives.…
+
+
+Recorded on : Dec 4, 2014
+
+Discover HDP 2.2: Apache Storm and Apache Kafka for Stream Data Processing
+
+
+Hortonworks Data Platform 2.2 ships with Apache Storm and Apache Kafka for processing stream data in Hadoop. Now Storm runs on YARN with Apache Slider and it includes Kerberos support. The new Apache Kafka bolt for Storm supports sophisticated chaining for real-time analysis. Join Hortonworks vice president of product management Tim Hall and Taylor Goetz, a Hortonworks committer to Storm, for this 30-minute webinar as they discuss these and other new streaming and security capabilities in HDP 2.2. There will be time for Q&A at the end.…
+
+
+Recorded on : Jun 19, 2014
+
+Discover HDP 2.1: Apache Storm for Stream Data Processing in Hadoop
+
+
+For the first time, Hortonworks Data Platform ships with Apache Storm for processing stream data in Hadoop. In this 30-minute webinar, Himanshu Bari, Hortonworks senior product manager, and Taylor Goetz, Hortonworks engineer and committer to Apache Storm, will discuss Storm and stream processing in HDP 2.1, including:
+Key requirements of a streaming solution and common use cases
+An overview of Apache Storm 0.9.1
+Integration of Apache Storm with Apache Ambari
+
+Himanshu and Taylor will present an overview of Storm in HDP 2.1, followed by a brief demo with time for Q & A.…
+
+
+ Forums
+
+
+
+
+Login to create new topics or reply. | New User Registration
+
+
+This forum contains 20 topics and 15 replies, and was last updated by  Alexey Shchedrin 1 week, 6 days ago.
+
+
+Viewing 20 topics - 1 through 20 (of 20 total) 
+ 
+
+0
+
+Replies
+
+Hortonworks tutorial "Processing Real-time events with Apache Storm" 
+
+Last activity 1 week, 6 days ago	by Alexey Shchedrin 
+ 	
+
+0
+
+Replies
+
+Can Storm's HdfsBolt flush data after a timeout as well? 
+
+Last activity 2 weeks ago	by Shay Gupta 
+ 	
+
+0
+
+Replies
+
+Not able to get Storm Starter Kit 
+
+Last activity 1 month, 3 weeks ago	by N U M 
+ 	
+
+0
+
+Replies
+
+Storm sink issue 
+
+Last activity 2 months, 1 week ago	by Nagaraj Vittal 
+ 	
+
+2
+
+Replies
+
+Storm cannot connect to HDFS in HA mode 
+
+Last activity 4 months, 1 week ago	by Koelli Mungee 
+ 	
+
+0
+
+Replies
+
+Storm-kafka Hortonworks Tutorials for real time data streaming 
+
+Last activity 5 months ago	by Choon Hwa Khoh 
+ 	
+
+1
+
+Replies
+
+Trident State Storm bug 
+
+Last activity 5 months ago	by hoang thang 
+ 	
+
+1
+
+Replies
+
+Problems with configuring storm supervision 
+
+Last activity 6 months, 1 week ago	by Amikam Snir 
+ 	
+
+3
+
+Replies
+
+Getting errors in Storm tutorial 
+
+Last activity 6 months, 2 weeks ago	by Piyush Routray 
+ 	
+
+1
+
+Replies
+
+Storm and IBM MQ Series 
+
+Last activity 6 months, 3 weeks ago	by Adam Doyle 
+ 	
+
+0
+
+Replies
+
+Storm and kafka appender not working 
+
+Last activity 6 months, 3 weeks ago	by elodie manient 
+ 	
+
+0
+
+Replies
+
+Pyleus and HDP 
+
+Last activity 9 months, 1 week ago	by Winnie Cheng 
+ 	
+
+0
+
+Replies
+
+UI shows nothing under topology summary 
+
+Last activity 10 months, 2 weeks ago	by gaurav agarwal 
+ 	
+
+3
+
+Replies
+
+Storm on Yarn INstall on HDP 2.0 
+
+Last activity 11 months ago	by  
+ 	
+
+0
+
+Replies
+
+Upgrade Storm to 0.9.2 
+
+Last activity 1 year, 2 months ago	by Cuong Luu 
+ 	
+
+0
+
+Replies
+
+storm-yarn launch storm.yaml is not working 
+
+Last activity 1 year, 3 months ago	by Surendra Gurjar 
+ 	
+
+0
+
+Replies
+
+Storm Tutorial for Beginners 
+
+Last activity 1 year, 4 months ago	by Muhammad Shahid Ansari 
+ 	
+
+0
+
+Replies
+
+Predictive modeling and Algorithm Analyis 
+
+Last activity 1 year, 4 months ago	by Anupam Gupta 
+ 	
+
+0
+
+Replies
+
+Storm ui : local host connection failed 
+
+Last activity 1 year, 4 months ago	by Rajesh Reddy Kundur 
+ 	
+
+4
+
+Replies
+
+Change Nimbus Host 
+
+Last activity 1 year, 5 months ago	by Gufran Pathan 
+ 	
+
+
+
+
+ 
+
+Viewing 20 topics - 1 through 20 (of 20 total) 
+ 
+
+
+You must be logged in to create new topics. | Create Account
+  
+
+
+
+
+
+
+Hortonworks Data Platform
+
+The Hortonworks Data Platform is a 100% open source distribution of Apache Hadoop that is truly enterprise grade having been built, tested and hardened with enterprise rigor.
+
+Discover HDP
+
+
+
+
+Get started with Sandbox
+
+Hortonworks Sandbox is a self-contained virtual machine with Apache Hadoop pre-configured alongside a set of hands-on, step-by-step Hadoop tutorials.
+
+Try Sandbox
+
+
+
+Modern Data Architecture
+
+Tackle the challenges of big data. Hadoop integrates with existing EDW, RDBMS and MPP systems to deliver lower cost, higher capacity infrastructure.
+
+Learn More
+ 
+ 
+ 
+
+
+
+Stay up to date!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+About Us Investor Relations
+Quick Facts
+Management Team
+Board of Directors
+Founders
+Careers
+Internships
+
+Press Press Releases
+In the Press
+
+Partners Systems Integrators
+Technology Partners
+Resellers
+Certification
+Become a Partner
+
+Connect Blog
+Webinars
+Events
+
+Contact Contact
+
++1 408 916-4121 
+1 855 8-HORTON
+Hortonworks Facebook
+Hortonworks Twitter
+Hortonworks LinkedIn
+
+
+
+
+Hortonworks - Develops, Distributes and Supports Open Enterprise Hadoop.
+
+© 2011-2015 Hortonworks Inc. All Rights Reserved.
+ Hadoop, Falcon, Atlas, Sqoop, Flume, Kafka, Pig, Hive, HBase, Accumulo, Storm, Solr, Spark, Ranger, Knox, Ambari, ZooKeeper, Oozie and the Hadoop elephant logo are trademarks of the Apache Software Foundation.
+Privacy Policy | Terms of Service 
+
+   
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Blog  |  Partners  |  Contact  |  
+ 
+  |  
+   |  
+ Login 
+
+
+
+
+
+
+
+
+
+   
+
+  
+Hortonworks Logo
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+Why Hortonworks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Products
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Customers
+
+
+Solutions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Training
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Services
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Developers
+
+
+
+
+
+
+
+
+
+
+
+Get Started
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+Solutions » Optimize Your Infrastructure
+ 
+
+
+
+
+
+
+Reduce costs by moving data and processing to Hadoop
+ 
+Incorporate Hadoop to modernize your data architecture and gain significant cost savings. Move high volumes of existing data into Hadoop, offload processing workloads, and enrich your data architecture with additional types of data to create new business value.
+
+
+
+
+
+
+Today’s data architectures are strained under the loads placed upon them. Data volumes continue to grow considerably, low value workloads like ETL consume ever more processing resources, and new types of data can’t easily be captured and put to use. Organizations struggle with escalating costs, increasing complexity, and the challenge of expansion.
+
+Data architects use Hadoop to address these challenges, moving high data volumes to Hadoop, offloading ETL processes, and enriching existing data architectures with new data for increased value.
+
+
+
+
+
+Get the Whitepaper
+
+
+Get the full picture of how Hadoop can be integrated within your data-center. This 20-page in-depth paper outlines the journey to creating a data lake. 
+
+Download 
+
+ 
+
+
+
+Optimization opens new paths to efficiency
+
+Archive, Offload and Enrich
+
+
+
+
+
+ARCHIVE
+
+
+By design, Hadoop runs on low-cost commodity servers and direct attached storage that allows for a dramatically lower overall cost. When compared to high-end storage area networks, the option of scale-out commodity compute and storage using Hadoop provides a compelling alternative —one which allows the user to scale out their hardware only as their data grows. This cost dynamic makes it possible to store, process, access and analyze more data than ever before.
+
+Case Study: Western Digital »
+
+
+
+
+OFFLOAD
+
+
+The scope of ETL, analytics and operations tasks executed by the Enterprise Data Warehouse (EDW) has grown considerably. The ETL function is a relatively low-value computing workload that can be performed at a lower cost. When offloaded to Hadoop, data is extracted, transformed and then the results are loaded into the data warehouse. The result: critical CPU cycles and storage space are freed for the truly high value functions – analytics and operations – that best leverage its advanced capabilities.
+
+Case Study: Neustar »
+
+
+
+
+ENRICH
+
+
+An incredible array of new data types opens possibilities for analysis within the high-performance EDW environment. The varied structures of these new data types, however, present challenges for EDWs not designed to ingest and analyze those formats. Many organizations rely on the flexibility of Hadoop to capture, store and refine these new data types to use within the EDW. They take advantage of the ability to define schema upon read in Hadoop, gathering and storing data in any format and creating schema to support analysis in the EDW when necessary.
+
+Case Study: Zirmed »
+
+
+
+
+
+
+Recently in the Blog
+
+St. Louis Buses Run with LHP Telematics and Hortonworks
+
+
+
+October 1, 2015
+
+Dan Daogaru
+
+
+The Path to Wellness through Big Data
+
+
+
+October 1, 2015
+
+Richard Proctor
+
+
+Unique Big Data Needs of the IoAT
+
+
+
+September 28, 2015
+
+Matt Morgan
+
+
+Open Enterprise Hadoop Roadshow Seminars: Coming to a City Near You
+
+
+
+August 17, 2015
+
+Denise Maudru
+
+
+EMC Chooses Hortonworks For Its Exclusive Top-level Partner Program
+
+
+
+August 4, 2015
+
+Cheryle Custer
+
+
+Oracle’s Big Data Integration Offering Certified on Hortonworks HDP 2.2
+
+
+
+June 17, 2015
+
+Cheryle Custer
+
+
+Apache Hadoop Infrastructure Considerations and Best Practices
+
+
+
+May 21, 2015
+
+Lisa Sensmeier
+
+
+Panning for Gold: From raw data to meaningful insights
+
+
+
+May 7, 2015
+
+Grant Bodley
+
+
+
+
+
+View Past Webinars
+
+
+Recorded on : Oct 15, 2015
+
+SQL on Hadoop
+
+
+
+
+
+Recorded on : Oct 13, 2015
+
+Laying the foundation for a Data-Driven Enterprise with Hadoop
+
+
+
+
+
+
+
+  
+
+
+
+Stay up to date!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+About Us Investor Relations
+Quick Facts
+Management Team
+Board of Directors
+Founders
+Careers
+Internships
+
+Press Press Releases
+In the Press
+
+Partners Systems Integrators
+Technology Partners
+Resellers
+Certification
+Become a Partner
+
+Connect Blog
+Webinars
+Events
+
+Contact Contact
+
++1 408 916-4121 
+1 855 8-HORTON
+Hortonworks Facebook
+Hortonworks Twitter
+Hortonworks LinkedIn
+
+
+
+
+Hortonworks - Develops, Distributes and Supports Open Enterprise Hadoop.
+
+© 2011-2015 Hortonworks Inc. All Rights Reserved.
+ Hadoop, Falcon, Atlas, Sqoop, Flume, Kafka, Pig, Hive, HBase, Accumulo, Storm, Solr, Spark, Ranger, Knox, Ambari, ZooKeeper, Oozie and the Hadoop elephant logo are trademarks of the Apache Software Foundation.
+Privacy Policy | Terms of Service 
+ 
+
+ 	
+
+
+                          
+
+                     ​     
+	
+
+
+               
